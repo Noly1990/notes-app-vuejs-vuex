@@ -26,12 +26,13 @@
     <div class="container">
       <div class="list-group">
         <a v-for="note in filteredNotes"
-          class="list-group-item" href="#"
+          class="list-group-item all" href="#"
           :class="{active: activeNote === note}"
-          @click="updateActiveNote(note)">
-          <h4 class="list-group-item-heading">
-            {{note.text.trim().substring(0, 30)}}
+          @click="updateActiveNote(note)" :key="note.id">
+          <h4 class="list-group-item-heading left">
+            {{note.title.trim().substring(0, 30)}}
           </h4>
+          <i class="love glyphicon glyphicon-star" v-if="note.favorite"></i>
         </a>
       </div>
     </div>
@@ -68,3 +69,18 @@ export default {
   }
 }
 </script>
+
+
+<style scoped>
+  .love {
+    float: right;
+    color: orange;
+  }
+  .left {
+    float: left;
+  }
+  .all {
+    overflow: hidden;
+  }
+</style>
+

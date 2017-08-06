@@ -4,13 +4,13 @@
     <i @click="toggleFavorite"
       class="glyphicon glyphicon-star"
       :class="{starred: activeNote.favorite}"></i>
-    <i @click="deleteNote" class="glyphicon glyphicon-remove"></i>
+    <i @click="deleteWarn" class="glyphicon glyphicon-remove"></i>
   </div>
 </template>
 
 <script>
 import { addNote, deleteNote, toggleFavorite } from '../vuex/actions'
-
+import Vue from 'vue'
 export default {
   vuex: {
     getters: {
@@ -20,6 +20,13 @@ export default {
       addNote,
       deleteNote,
       toggleFavorite
+    }
+  },
+    methods:{
+    deleteWarn () {
+      if (confirm('Are you sure to delete it?')) {
+        this.deleteNote()
+      }
     }
   }
 }

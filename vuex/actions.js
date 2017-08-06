@@ -6,7 +6,11 @@ export const editNote = ({ dispatch }, e) => {
   dispatch('EDIT_NOTE', e.target.value)
 }
 
-export const deleteNote = ({ dispatch }) => {
+export const editTitle = ({ dispatch }, e) => {
+  dispatch('EDIT_TITLE', e.target.value)
+}
+
+export const deleteNote = function({ dispatch }) {
   dispatch('DELETE_NOTE')
 }
 

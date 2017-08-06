@@ -5,16 +5,19 @@ Vue.use(Vuex)
 
 const state = {
   notes: [],
-  activeNote: {}
+  activeNote: {},
+  listNum:0
 }
 
 const mutations = {
   ADD_NOTE (state) {
     const newNote = {
-      text: 'New note',
+      text: 'add some new text',
+      title: 'New Title '+state.listNum,
       favorite: false
     }
     state.notes.push(newNote)
+    state.listNum++
     state.activeNote = newNote
   },
 
@@ -33,6 +36,10 @@ const mutations = {
 
   SET_ACTIVE_NOTE (state, note) {
     state.activeNote = note
+  },
+
+  EDIT_TITLE(state, title) {
+    state.activeNote.title = title
   }
 }
 
